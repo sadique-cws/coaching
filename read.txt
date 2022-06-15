@@ -1,0 +1,45 @@
+Name
+Mother Name
+Father Name
+Contact
+Email
+Education
+Date of Birth
+Gender
+Address
+password
+
+user
+1. contact
+2. Email
+3. password 
+4. Name
+
+
+student 
+1. id
+2. user_id
+4. mother Name 
+5. Father name 
+6. Education
+7. dob
+8. gender 
+9. Address 
+
+
+
+who can login?
+1. admin can login 
+2. student can login
+
+
+admin can access all records 
+
+
+but 
+student can access only own records 
+
+
+feature 
+login, logout, flash message, form validation, resource based controller, middleware 
+
