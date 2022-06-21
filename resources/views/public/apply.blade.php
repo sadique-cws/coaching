@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">Apply for admission</div>
                     <div class="card-body">
-                        <form action="{{}}" method="POST">
+                        <form action="{{route('student.store')}}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="">Your Name</label>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">Mother Name</label>
-                                <input type="text" name="motherName" value="{{old('MotherName')}}" class="form-control">
+                                <input type="text" name="motherName" value="{{old('motherName')}}" class="form-control">
                                 @error('motherName')
                                 <p class="text-danger small">{{$message}}</p>
                             @enderror
@@ -39,6 +39,13 @@
                                 <label for="">DOB</label>
                                 <input type="date" name="dob" value="{{old('dob')}}" class="form-control">
                                 @error('dob')
+                                <p class="text-danger small">{{$message}}</p>
+                            @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="">Address</label>
+                                <input type="text" name="address" value="{{old('address')}}" class="form-control">
+                                @error('address')
                                 <p class="text-danger small">{{$message}}</p>
                             @enderror
                             </div>

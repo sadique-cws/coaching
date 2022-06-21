@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Auth;
 class StudentController extends Controller
 {
   
@@ -32,6 +32,7 @@ class StudentController extends Controller
         ]);
 
         $data = new Student();
+        $data->user_id = Auth::id();
         $data->father_name = $request->fatherName;
         $data->mother_name = $request->motherName;
         $data->address = $request->address;

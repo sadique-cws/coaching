@@ -24,7 +24,7 @@
                     <li class="nav-item"><a href="{{route('logout')}}" class="nav-link">logout</a></li>
                 @endauth
 
-                <li class="nav-item"><a href="{{route('apply')}}" class="btn btn-dark btn-sm my-1">Apply for Join Us</a></li>
+                <li class="nav-item"><a href="{{route('student.create')}}" class="btn btn-dark btn-sm my-1">Apply for Join Us</a></li>
 
             </ul>
         </div>
