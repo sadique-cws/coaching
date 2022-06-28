@@ -19,7 +19,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="">Your Name</label>
-                                <input type="text" name="name" value="" class="form-control" disabled>
+                                <input type="text" name="name" value="{{auth()->user()->name}}" class="form-control" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="">Father Name</label>

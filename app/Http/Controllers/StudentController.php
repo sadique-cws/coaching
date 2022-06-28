@@ -10,26 +10,30 @@ class StudentController extends Controller
   
     public function index()
     {
-        
+        $data['checkStudent'] = Student::where("user_id",Auth::id())->first();
+        return view("studentPanel.profile",$data);
     }
 
    
     public function create()
     {
+        if(Student::where("user_id",Auth::id())->exists()){
+            return redirect()->route('student.index');   
+        }
+
         return view("public.apply");
     }
 
-  
-    public function store(Request $request)
-    {
-        $request->validate([
-            'fatherName' => 'required',
-            'motherName' => 'required',
-            'dob' => 'required',
-            'education' => 'required',
-            'gender' => 'required',
-            'address' => 'required',
-        ]);
+      public function store(Request $request)
+        {
+            $request->validate([
+                'fatherName' => 'required',
+                'motherName' => 'required',
+                'dob' => 'required',
+                'education' => 'required',
+                'gender' => 'required',
+                'address' => 'required',
+            ]);
 
         $data = new Student();
         $data->user_id = Auth::id();
@@ -40,7 +44,7 @@ class StudentController extends Controller
         $data->dob = $request->dob;
         $data->education = $request->education;
         $data->save();
-        return redirect()->route("homepage");
+        return redirect()->route("student.index");
     }
 
     

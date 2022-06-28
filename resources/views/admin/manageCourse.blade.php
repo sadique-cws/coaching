@@ -1,23 +1,5 @@
 @extends('base')
 
-
-@section('data')
-    <div class="container">
-        <div class="row">
-            <div class="col-3">
-                @include('admin.side')
-            </div>
-            <div class="col-9">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h2 class="display-2">{{$total_students}}</h2>
-                                <h6>total students</h6>
-                            </div>
-                        </div>
-                    </di@extends('base')
-
 @section('data')
     <div class="container">
         <div class="row">
@@ -56,34 +38,19 @@
                             <td>{{$course->discount_fee}}</td>
                             <td>{{$course->image}}</td>
                             <td>{{$course->description}}</td>
+                            <td>{{$course->category}}</td>
                             <td>{{$course->status}}</td>
                             <td>
-                                <a href="" class="btn btn-danger">X</a>
+                                <form action="{{route('course.destroy',['course'=>$course])}}" method="POST">
+                                    @method("delete")
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger" value="X">
+                                </form>
+                                <a href="{{route('course.edit',['course'=>$course->id])}}" class="btn btn-info">Edit</a>
                             </td>
                         </tr>
                     @endforeach
                 </table>
-            </div>
-        </div>
-    </div>
-@endsectionv>
-                    <div class="col-4">
-                        <div class="card bg-danger text-white">
-                            <div class="card-body">
-                                <h2 class="display-2">{{$total_users}}</h2>
-                                <h6 >total Users</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card text-white bg-success">
-                            <div class="card-body">
-                                <h2 class="display-2">30+</h2>
-                                <h6>total Payment</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

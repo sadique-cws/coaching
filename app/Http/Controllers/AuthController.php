@@ -21,7 +21,7 @@ class AuthController extends Controller
             $auth = $req->only("email","password");
 
             if(Auth::attempt($auth)){
-                return redirect()->route("homepage");
+                return redirect()->route("student.index");
             }
             else{
                 $req->session()->flash("error","login with incorrect details try again");
@@ -49,7 +49,7 @@ class AuthController extends Controller
             $user->password = Hash::make($req->password); 
             $user->save();
 
-            return redirect()->route("homepage");
+            return redirect()->route("login");
         }
         else{
             return view("auth.signup");
