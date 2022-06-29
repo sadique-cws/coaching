@@ -7,6 +7,8 @@ use App\Models\{Student, User};
 
 class AdminController extends Controller
 {
+
+  
     public function dashboard(){
         $data['total_students'] = Student::all()->count();
         $data['total_users'] = User::all()->count();

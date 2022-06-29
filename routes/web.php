@@ -14,13 +14,17 @@ Route::get("/",[HomeController::class,"index"])->name("homepage");
 
 
 Route::prefix("admin")->group(function(){
-    Route::resource('course', CourseController::class);
+    Route::match(["get","post"],"/login",[AuthController::class,"teacherLogin"])->name("teacher.login");
     
-    Route::controller(AdminController::class)->group(function(){
-        Route::get("/index","dashboard")->name("admin.index");
-        Route::get("/manage/user","manageUser")->name("admin.manage.user");
-        Route::get("/manage/student","manageStudent")->name("admin.manage.student");
-    }); 
+    Route::middleware('auth:teacher')->group(function () {
+        Route::controller(AdminController::class)->group(function(){
+            Route::get("/","dashboard")->name("admin.index");
+            Route::get("/manage/user","manageUser")->name("admin.manage.user");
+            Route::get("/manage/student","manageStudent")->name("admin.manage.student");
+        }); 
+        Route::resource('course', CourseController::class);
+    });
+
 });
 
 
